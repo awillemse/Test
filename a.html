@@ -1,0 +1,68 @@
+From Github into WebIDE:
+
+<!DOCTYPE html>
+<html>
+<!--src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+-->
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>SAPUI5 in 20 Seconds</title>
+    <!-- 1.) Load SAPUI5 (from a remote server), select theme and control library -->
+    <script id="sap-ui-bootstrap"
+        src="resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_bluecrystal"
+        data-sap-ui-libs="sap.ui.commons">
+    </script>
+    <!-- 2.) Create a UI5 button and place it onto the page -->
+    <script>
+        // create the 1st button instance
+        var myButton1 = new sap.ui.commons.Button("btn1");
+        // create the 2nd button instance
+        var myButton2 = new sap.ui.commons.Button("btn2");
+        
+        
+        // set properties, e.g. the text (there is also a shorter way of setting several properties)
+        myButton1.setText("Hello World!");
+        myButton2.setText("Button 2!");
+        // attach an action to the button's "press" event (use jQuery to fade out the button)
+        myButton1.attachPress(function(){$("#btn1").fadeOut()});
+        //attach an action to the 2nd button's "press" event (use jQuery to fade out the button)
+        // in the SDK API reference, I can check the methods associated with the Control's Class. e.g. attachPress
+        // how do I know what events a control (sap.ui.commons.Button in this case) can have? I.e the XXXXXX in this case.
+        // how do I know what function() can do? Is this the "eventhandler"?
+        // what does the $ mean?
+        // What is the syntax to use function()?
+        myButton2.attachPress(function(){$("#btn2").fadeOut()});
+        // place the 1st button into the HTML element defined below
+        myButton1.placeAt("uiArea1");
+        // place the 2nd button into the HTML element defined below
+        myButton2.placeAt("uiArea2");
+        // an alternative, more jQuery-like notation for the same is:  
+        /*
+        $(function(){
+            $("#uiArea").sapui("Button", "btn", {
+                text:"Hello World!",
+                press:function(){$("#btn").fadeOut();}
+            });
+         });
+         */
+         
+        var myImage = new sap.ui.commons.Image("img1");
+        myImage.setSrc("FlowersAndWesp.jpg");
+        myImage.setTooltip("Summer 2001, an syrphid fly on a chrysantemum.");
+        myImage.setDecorative(false);
+        myImage.placeAt("uiArea3");
+         
+         
+    </script>
+</head>
+<body class="sapUiBody">
+    <div id="uiArea1"></div>
+    <p>Summer 2001, an syrphid fly on a chrysantemum.</p>
+    <div id="uiArea3"></div>  
+    <p></p>
+    <div id="uiArea2"></div>  
+</body>
+
+</html>
